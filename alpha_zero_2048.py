@@ -645,7 +645,7 @@ def make_2048_config() -> alpha_zero.MuZeroConfig:
 
 if __name__ == "__main__":
     config = make_2048_config()
-    if sys.argc > 1:
+    if len(sys.argv) > 1:
         alpha_zero.train_muzero(config)
     else:
         alpha_zero.play_muzero(config)
