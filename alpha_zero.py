@@ -1,5 +1,6 @@
 # Lint as: python3
-"""Pseudocode description of the MuZero algorithm."""
+"""Pseudocode description of the MuZero algorithm.
+https://github.com/fnclovers/Minimal-AlphaZero"""
 # pylint: disable=unused-argument
 # pylint: disable=missing-docstring
 # pylint: disable=g-explicit-length-test
