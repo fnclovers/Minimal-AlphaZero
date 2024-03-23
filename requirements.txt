@@ -1,0 +1,2 @@
+pytorch-lightning==2.2.0.post0
+numpy==1.25.2

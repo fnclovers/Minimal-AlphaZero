@@ -196,7 +196,7 @@ class Network2048(nn.Module, alpha_zero.Network):
         self.num_actions = num_actions
         self.device = device
         self.n_training_steps = 0
-        self.hidden_dim = 64
+        self.hidden_dim = 128
         self.representation_layers = 4
         self.dynamic_layers = 4
         self.prediction_layers = 4
@@ -639,7 +639,7 @@ def make_2048_config() -> alpha_zero.MuZeroConfig:
     config.root_exploration_fraction = (
         0.25  # Fraction of the exploration budget to be used in the root
     )
-    config.num_simulations = 64  # Number of MCTS simulations per move
+    config.num_simulations = 128  # Number of MCTS simulations per move
     return config
 
 

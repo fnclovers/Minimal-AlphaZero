@@ -39,7 +39,7 @@ torch.set_float32_matmul_precision("high")
 KnownBounds = collections.namedtuple("KnownBounds", ["min", "max"])
 
 
-class MinMaxStats(object):
+class MinMaxStats:
     """A class that holds the min-max values of the tree."""
 
     def __init__(self, known_bounds: Optional[KnownBounds]):
@@ -57,7 +57,7 @@ class MinMaxStats(object):
         return value
 
 
-class MuZeroConfig(object):
+class MuZeroConfig:
 
     def __init__(
         self,
@@ -189,7 +189,7 @@ def make_atari_config() -> MuZeroConfig:
     )
 
 
-class Action(object):
+class Action:
 
     def __init__(self, index: int):
         self.index = index
@@ -207,12 +207,12 @@ class Action(object):
         return self.index
 
 
-class Player(object):
+class Player:
     def __eq__(self, other):
         return True
 
 
-class Node(object):
+class Node:
 
     def __init__(self, prior: float):
         self.visit_count = 0
@@ -232,7 +232,7 @@ class Node(object):
         return self.value_sum / self.visit_count
 
 
-class ActionHistory(object):
+class ActionHistory:
     """Simple history container used inside the search.
 
     Only used to keep track of the actions executed.
@@ -258,25 +258,24 @@ class ActionHistory(object):
         return Player()
 
 
-class Environment(object):
+class Environment:
     """The environment MuZero is interacting with."""
 
     def step(self, action):
         pass
 
 
-class Game(object):
+class Game:
     """A single episode of interaction with the environment."""
 
     def __init__(self, action_space_size: int, discount: float):
         self.environment = Environment()  # Game specific environment.
-        self.history = (
-            []
-        )  # history of prev actions; used for recurrent inference for training
-        self.rewards = []  # rewards of prev actions; used for training dynamics network
-        self.child_visits = (
-            []
-        )  # child visit probabilities; used for training policy network
+        # history of prev actions; used for recurrent inference for training
+        self.history = []
+        # rewards of prev actions; used for training dynamics network
+        self.rewards = []
+        # child visit probabilities; used for training policy network
+        self.child_visits = []
         self.root_values = []
         self.action_space_size = action_space_size
         self.discount = discount
@@ -310,8 +309,9 @@ class Game(object):
         return []
 
     def make_target(self, state_index: int, num_unroll_steps: int, td_steps: int):
-        # The value target is the discounted root value of the search tree N steps
-        # into the future, plus the discounted sum of all rewards until then.
+        """ The value target is the discounted root value of the search tree N steps
+        into the future, plus the discounted sum of all rewards until then.
+        """
         targets = []
         for current_index in range(state_index, state_index + num_unroll_steps + 1):
             bootstrap_index = current_index + td_steps
@@ -356,7 +356,7 @@ class Game(object):
         return len(self.history)
 
 
-class ReplayBuffer(object):
+class ReplayBuffer:
 
     def __init__(self, config: MuZeroConfig):
         self.window_size = config.window_size
@@ -398,7 +398,7 @@ class NetworkOutput(typing.NamedTuple):
     hidden_state: Any
 
 
-class Network(object):
+class Network:
     def __init__(self):
         self.n_training_steps = 0
 
@@ -439,7 +439,7 @@ def make_network(config: MuZeroConfig, training: bool) -> Network:
     return Network()
 
 
-class SharedStorage(object):
+class SharedStorage:
 
     def __init__(self, config: MuZeroConfig):
         self.config = config

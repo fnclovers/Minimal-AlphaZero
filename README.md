@@ -12,6 +12,26 @@ This implementation is designed to be as minimal and understandable as possible 
   
 - **Self-Play and Training Framework:** Our framework supports self-play data generation, which is crucial for the learning process of the algorithm. It also includes a training pipeline that utilizes a shared replay buffer and employs a modular network architecture for efficient learning.
 
+## Requirements
+
+To run this implementation, you will need:
+- Python 3.6 or later
+- PyTorch (version specified in `requirements.txt`)
+- NumPy
+
+Please refer to `requirements.txt` for a complete list of dependencies.
+
+## Setup
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies using pip:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Choose a game configuration function (e.g., `make_chess_config`) to initialize the `MuZeroConfig` with parameters suitable for your chosen game.
+
 ## How to Run
 
 This implementation includes pre-configured setups for two popular games: 2048 and Connect 4. Follow these instructions to get started:
@@ -45,3 +65,11 @@ The provided Python code outlines a comprehensive MuZero framework that includes
 This minimal MuZero implementation provides a solid foundation for exploring and understanding one of the most advanced reinforcement learning algorithms. It's designed to be accessible yet extendable, making it an ideal starting point for your experiments with AI in gaming.
 
 We encourage you to dive into the code, experiment with adding your own games, and contribute to this exciting area of AI research.
+
+## Contributing
+
+Contributions to improve this implementation or extend it to new environments are welcome. Please submit pull requests with any proposed changes or enhancements.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
